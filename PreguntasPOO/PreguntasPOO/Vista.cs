@@ -9,7 +9,7 @@ namespace PreguntasPOO
         {            
             prueba.ObtenerPreguntas();
             Console.WriteLine("INICIANDO PRUEBA");
-            prueba.IniciarTest();            
+            prueba.IniciarTest();
             prueba.Calificar();
         }
     }
