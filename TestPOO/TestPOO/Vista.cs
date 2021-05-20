@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TestPOO
 {
-    class Vista
+    public class Vista
     {
         static Test prueba = new Test();
         static void Main(string[] args)

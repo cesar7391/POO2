@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TestPOO
 {
-    interface Pregunta
+    public interface Pregunta
     {
         void setPregunta(string pregunta);
         void setOpciones(string opciones);

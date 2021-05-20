@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TestPOO
 {
-    class Test
+    public class Test
     {
         List<Pregunta> listaP = new List<Pregunta>();
 

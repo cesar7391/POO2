@@ -8,7 +8,7 @@ using System.IO;
 
 namespace TestPOO
 {
-    class LectorExcel
+    public class LectorExcel
     {
         List<String> listaPreguntas = new List<string>();
         SLDocument sl;

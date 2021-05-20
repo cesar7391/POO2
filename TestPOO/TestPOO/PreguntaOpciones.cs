@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TestPOO
 {
-    class PreguntaOpciones : Pregunta
+    public class PreguntaOpciones : Pregunta
     {
         private String pregunta;
         private String opciones;
