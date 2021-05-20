@@ -13,7 +13,9 @@ namespace PreguntasPOO
         {
             LectorExcel lector = new LectorExcel();
             //Se piden cuantas preguntas
-            List<String> preguntas = lector.LeerPreguntas(3);
+            Console.Write("Número de preguntas: ");
+            int nPreguntas = Convert.ToInt32(Console.ReadLine());
+            List<String> preguntas = lector.LeerPreguntas(nPreguntas);
 
             for (int i = 0; i < preguntas.Count; i++)
             {
@@ -57,7 +59,8 @@ namespace PreguntasPOO
                     String respuestaU = Console.ReadLine();
                     listaP[i].setRespuestaU(respuestaU);
                 }
-            }            
+                Console.WriteLine("================");
+            }
         }
 
         public void Calificar()

@@ -8,7 +8,8 @@ namespace PreguntasPOO
         static void Main(string[] args)
         {            
             prueba.ObtenerPreguntas();
-            prueba.IniciarTest();
+            Console.WriteLine("INICIANDO PRUEBA");
+            prueba.IniciarTest();            
             prueba.Calificar();
         }
     }
