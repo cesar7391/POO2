@@ -2,12 +2,15 @@
 using SpreadsheetLight;
 using System.Collections.Generic;
 using System.Text;
+using System.IO;
 
 namespace PreguntasPOO
 {
     class LectorExcel
     {
         List<String> listaPreguntas = new List<string>();
+        SLDocument sl;
+
         public List<String> LeerPreguntas(int nPreguntas)
         {            
             Console.Write("Introduzca ruta del archivo: ");
@@ -16,44 +19,64 @@ namespace PreguntasPOO
             string nombre = Console.ReadLine();
 
             string path = @"" + ruta + "\\" + nombre + ".xlsx";
-            SLDocument sl = new SLDocument(path);
 
-            int filas = 2;
-            while (!string.IsNullOrEmpty(sl.GetCellValueAsString(filas, 1))) { filas++; }
-
-            if(nPreguntas+1 < filas)
+            if (File.Exists(path))
             {
-                for (int i = 2; i < nPreguntas + 2; i++)
-                {
-                    int tipo = sl.GetCellValueAsInt32(i, 1);
-                    string pregunta = sl.GetCellValueAsString(i, 2);
-                    string opciones = sl.GetCellValueAsString(i, 3);
-                    string respuesta = sl.GetCellValueAsString(i, 4);
+                sl = new SLDocument(path);
 
-                    String todo = tipo + "|" + pregunta + "|" + opciones + "|" + respuesta;
-                    listaPreguntas.Add(todo);
-                    //Console.WriteLine("{0}, {1}, {2}", tipo, pregunta, respuesta);                    
+                int filas = 2;
+                while (!string.IsNullOrEmpty(sl.GetCellValueAsString(filas, 1))) { filas++; }
+
+                if (nPreguntas + 1 < filas)
+                {
+                    for (int i = 2; i < nPreguntas + 2; i++)
+                    {
+                        int tipo = sl.GetCellValueAsInt32(i, 1);
+                        string pregunta = sl.GetCellValueAsString(i, 2);
+                        string opciones = sl.GetCellValueAsString(i, 3);
+                        string respuesta = sl.GetCellValueAsString(i, 4);
+
+                        String todo = tipo + "|" + pregunta + "|" + opciones + "|" + respuesta;
+                        listaPreguntas.Add(todo);
+                        //Console.WriteLine("{0}, {1}, {2}", tipo, pregunta, respuesta);                    
+                    }
                 }
-            } else
+                else
+                {
+                    filas = 2;
+                    while (!string.IsNullOrEmpty(sl.GetCellValueAsString(filas, 1)))
+                    {
+                        int tipo = sl.GetCellValueAsInt32(filas, 1);
+                        string pregunta = sl.GetCellValueAsString(filas, 2);
+                        string opciones = sl.GetCellValueAsString(filas, 3);
+                        string respuesta = sl.GetCellValueAsString(filas, 4);
+
+                        String todo = tipo + "|" + pregunta + "|" + opciones + "|" + respuesta;
+                        listaPreguntas.Add(todo);
+                        filas++;
+                    }
+                }
+
+                return listaPreguntas;
+            }
+            else
             {
-                filas = 2;
-                while (!string.IsNullOrEmpty(sl.GetCellValueAsString(filas, 1))) 
-                {
-                    int tipo = sl.GetCellValueAsInt32(filas, 1);
-                    string pregunta = sl.GetCellValueAsString(filas, 2);
-                    string opciones = sl.GetCellValueAsString(filas, 3);
-                    string respuesta = sl.GetCellValueAsString(filas, 4);
+                Console.WriteLine("NO SE ENCUENTRA EL ARCHIVO EN LA RUTA ESPECIFICADA");
+            }
 
-                    String todo = tipo + "|" + pregunta + "|" + opciones + "|" + respuesta;
-                    listaPreguntas.Add(todo);
-                    filas++; 
-                }
-            }           
-
-            return listaPreguntas;
+            return listaPreguntas;            
         }
 
-        public void Contenido()
+        [Serializable]
+        public class RutaException : Exception
+        {
+            public RutaException() 
+            {
+                Console.WriteLine("La ruta no es correcta");
+            }
+        }
+
+            public void Contenido()
         {
             for(int i = 0; i< listaPreguntas.Count; i++)
             {

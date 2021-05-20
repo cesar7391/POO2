@@ -12,27 +12,44 @@ namespace PreguntasPOO
         public void ObtenerPreguntas()
         {
             LectorExcel lector = new LectorExcel();
+            string nPreguntas;
+            int numP;
+
             //Se piden cuantas preguntas
-            Console.Write("Número de preguntas: ");
-            int nPreguntas = Convert.ToInt32(Console.ReadLine());
-            List<String> preguntas = lector.LeerPreguntas(nPreguntas);
-
-            for (int i = 0; i < preguntas.Count; i++)
+            do
             {
-                valores = preguntas[i].Split("|");
+                Console.Write("Número de preguntas: ");
+                nPreguntas = Console.ReadLine();
 
-                if (String.Equals(valores[0], "1"))
+                if (Int32.TryParse(nPreguntas, out numP))
                 {
-                    Pregunta pO = new PreguntaOpciones(1, valores[1], valores[2], Convert.ToInt32(valores[3]));
-                    listaP.Add(pO);
+                    numP = Convert.ToInt32(nPreguntas);
+
+                    List<String> preguntas = lector.LeerPreguntas(numP);
+
+                    for (int i = 0; i < preguntas.Count; i++)
+                    {
+                        valores = preguntas[i].Split("|");
+
+                        if (String.Equals(valores[0], "1"))
+                        {
+                            Pregunta pO = new PreguntaOpciones(1, valores[1], valores[2], Convert.ToInt32(valores[3]));
+                            listaP.Add(pO);
+                        }
+                        else
+                        {
+                            Pregunta pA = new PreguntaAbierta(2, valores[1], valores[2], Convert.ToInt32(valores[3]));
+                            listaP.Add(pA);
+                        }
+                    }
                 }
                 else
                 {
-                    Pregunta pA = new PreguntaAbierta(2, valores[1], valores[2], Convert.ToInt32(valores[3]));
-                    listaP.Add(pA);
+                    Console.WriteLine("EL VALOR INGRESADO NO ES VÁLIDO");
                 }
-            }
+            } while (Convert.ToInt32(nPreguntas) < 0);            
         }
+            
 
         public void IniciarTest()
         {
