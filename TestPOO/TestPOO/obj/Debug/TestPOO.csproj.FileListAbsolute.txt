@@ -1,0 +1,15 @@
+C:\Users\César\source\repos\TestPOO\TestPOO\obj\Debug\TestPOO.csprojAssemblyReference.cache
+C:\Users\César\source\repos\TestPOO\TestPOO\obj\Debug\TestPOO.csproj.CoreCompileInputs.cache
+C:\Users\César\source\repos\TestPOO\TestPOO\bin\Debug\TestPOO.exe.config
+C:\Users\César\source\repos\TestPOO\TestPOO\bin\Debug\TestPOO.exe
+C:\Users\César\source\repos\TestPOO\TestPOO\bin\Debug\TestPOO.pdb
+C:\Users\César\source\repos\TestPOO\TestPOO\bin\Debug\DocumentFormat.OpenXml.dll
+C:\Users\César\source\repos\TestPOO\TestPOO\bin\Debug\SpreadsheetLight.dll
+C:\Users\César\source\repos\TestPOO\TestPOO\bin\Debug\System.Drawing.Common.dll
+C:\Users\César\source\repos\TestPOO\TestPOO\bin\Debug\System.IO.Packaging.dll
+C:\Users\César\source\repos\TestPOO\TestPOO\bin\Debug\DocumentFormat.OpenXml.xml
+C:\Users\César\source\repos\TestPOO\TestPOO\bin\Debug\SpreadsheetLight.xml
+C:\Users\César\source\repos\TestPOO\TestPOO\bin\Debug\System.IO.Packaging.xml
+C:\Users\César\source\repos\TestPOO\TestPOO\obj\Debug\TestPOO.csproj.CopyComplete
+C:\Users\César\source\repos\TestPOO\TestPOO\obj\Debug\TestPOO.exe
+C:\Users\César\source\repos\TestPOO\TestPOO\obj\Debug\TestPOO.pdb
