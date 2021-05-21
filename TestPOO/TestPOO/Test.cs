@@ -21,35 +21,28 @@ namespace TestPOO
             do
             {
                 Console.Write("Número de preguntas: ");
-                nPreguntas = Console.ReadLine();
+                nPreguntas = Console.ReadLine();               
 
-                if (Int32.TryParse(nPreguntas, out numP))
+            } while (!nPreguntas.All(char.IsDigit));
+
+            numP = Convert.ToInt32(nPreguntas);
+            List<String> preguntas = lector.LeerPreguntas(numP);
+
+                for (int i = 0; i < preguntas.Count; i++)
                 {
-                    numP = Convert.ToInt32(nPreguntas);
+                    valores = preguntas[i].Split('|');
 
-                    List<String> preguntas = lector.LeerPreguntas(numP);
-
-                    for (int i = 0; i < preguntas.Count; i++)
+                    if (String.Equals(valores[0], "1"))
                     {
-                        valores = preguntas[i].Split('|');
-
-                        if (String.Equals(valores[0], "1"))
-                        {
-                            Pregunta pO = new PreguntaOpciones(1, valores[1], valores[2], Convert.ToInt32(valores[3]));
-                            listaP.Add(pO);
-                        }
-                        else
-                        {
-                            Pregunta pA = new PreguntaAbierta(2, valores[1], valores[2], Convert.ToInt32(valores[3]));
-                            listaP.Add(pA);
-                        }
+                        Pregunta pO = new PreguntaOpciones(1, valores[1], valores[2], Convert.ToInt32(valores[3]));
+                        listaP.Add(pO);
+                    }
+                    else
+                    {
+                        Pregunta pA = new PreguntaAbierta(2, valores[1], valores[2], Convert.ToInt32(valores[3]));
+                        listaP.Add(pA);
                     }
                 }
-                else
-                {
-                    Console.WriteLine("EL VALOR INGRESADO NO ES VÁLIDO");
-                }
-            } while (Convert.ToInt32(nPreguntas) < 0);
         }
 
 
@@ -101,7 +94,6 @@ namespace TestPOO
             }
             Console.WriteLine("================");
             Console.WriteLine("TOTAL DE ACIERTOS: {0}/{1}", contador, listaP.Count);
-
         }
     }
 }

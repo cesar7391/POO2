@@ -44,7 +44,7 @@ namespace PruebasT
         {
             //Arrange , se inicializan las variables para la prueba            
             PreguntaAbierta po = new PreguntaAbierta(2, "¿Qué significa POO?", "programación,orientada,objetos", 0);
-            String respuestaUsuario = "programación orientada a objetos";
+            String respuestaUsuario = "significa programación orientada a objetos";
             po.setRespuestaU(respuestaUsuario);
             bool expected = true;
 
@@ -69,6 +69,12 @@ namespace PruebasT
 
             //Assert , validar lo que queremos que se cumpla
             Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void TestLeerArchivo()
+        {
+
         }
     }
 }
