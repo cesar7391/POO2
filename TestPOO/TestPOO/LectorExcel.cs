@@ -13,13 +13,8 @@ namespace TestPOO
         List<String> listaPreguntas = new List<string>();
         SLDocument sl;
 
-        public List<String> LeerPreguntas(int nPreguntas)
+        public List<String> LeerPreguntas(string ruta, string nombre, int nPreguntas)
         {
-            Console.Write("Introduzca ruta del archivo: ");
-            string ruta = Console.ReadLine();
-            Console.Write("Introduzca nombre del archivo: ");
-            string nombre = Console.ReadLine();
-
             string path = @"" + ruta + "\\" + nombre + ".xlsx";
 
             if (File.Exists(path))

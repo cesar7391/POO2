@@ -24,9 +24,14 @@ namespace TestPOO
                 nPreguntas = Console.ReadLine();               
 
             } while (!nPreguntas.All(char.IsDigit));
-
             numP = Convert.ToInt32(nPreguntas);
-            List<String> preguntas = lector.LeerPreguntas(numP);
+
+            Console.Write("Introduzca ruta del archivo: ");
+            string ruta = Console.ReadLine();
+            Console.Write("Introduzca nombre del archivo: ");
+            string nombre = Console.ReadLine();
+
+            List<String> preguntas = lector.LeerPreguntas(ruta, nombre, numP);
 
                 for (int i = 0; i < preguntas.Count; i++)
                 {

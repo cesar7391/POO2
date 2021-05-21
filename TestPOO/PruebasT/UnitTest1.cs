@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Collections.Generic;
 using TestPOO;
 
 namespace PruebasT
@@ -72,9 +73,30 @@ namespace PruebasT
         }
 
         [TestMethod]
-        public void TestLeerArchivo()
+        public void TestLeerArchivoValor()
         {
+            LectorExcel le = new LectorExcel();
+            List<string> expected = new List<string>();
+            expected.Add("1|¿Cuánto es 2+2?|1,2,4,8|3");
+            expected.Add("2|¿Qué significa herencia en POO?|programación,orientada,objetos|0");
 
+            List<string> resultado = le.LeerPreguntas("c:\\archivos","ExcelPrueba",1);
+
+            Assert.AreEqual(expected[0],resultado[0]);
+        }
+
+        [TestMethod]
+        public void TestLeerArchivoTodo()
+        {
+            LectorExcel le = new LectorExcel();
+            List<string> expected = new List<string>();
+            expected.Add("1|¿Cuánto es 2+2?|1,2,4,8|3");
+            expected.Add("2|¿Qué significa herencia en POO?|programación,orientada,objetos|0");
+
+            List<string> resultado = le.LeerPreguntas("c:\\archivos", "ExcelPrueba", 100);
+
+            Assert.AreEqual(expected[0], resultado[0]);
+            Assert.AreEqual(expected[1], resultado[1]);
         }
     }
 }
